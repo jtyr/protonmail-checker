@@ -1,0 +1,37 @@
+{
+  "manifest_version": 2,
+  "name": "ProtonMail Checker",
+  "version": "1.0",
+  "description": "Checks number of unread e-mails in the ProtonMail Inbox.",
+  "icons": {
+    "48" : "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "browser_action": {
+    "default_icon": "icons/icon-48g.png",
+    "default_title": "Fix Image WebCache"
+  },
+  "background": {
+    "scripts": [
+      "scripts/background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://mail.protonmail.ch/*"
+      ],
+      "js": [
+        "scripts/jquery-2.0.2.min.js",
+        "scripts/contentscript.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    "scripts/jquery-2.0.2.min.map"
+  ],
+  "permissions": [
+    "tabs"
+  ]
+}
