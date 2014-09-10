@@ -1,3 +1,4 @@
+// Error counter
 var error = 0;
 
 
@@ -9,16 +10,16 @@ function getCount() {
     var unread = $(elem).attr('data-unread');
 
     if (parseInt(unread)) {
-      sendCountMessage(unread);
+      sendCountMessage(unread, 'There is unread message');
     } else {
-      sendCountMessage('');
+      sendCountMessage('', 'There is no unread message');
     }
 
     error = 0;
   } else {
       // Show '?' only after 5 error checks
       if (error > 4) {
-        sendCountMessage('?');
+        sendCountMessage('?', 'Problem to read ProtonMail Inbox');
       } else {
         error++;
       }
@@ -31,6 +32,6 @@ getCount();
 
 
 // Send the count to the background script to set the extension icon and badge
-function sendCountMessage(str) {
-  chrome.runtime.sendMessage({count: str});
+function sendCountMessage(count, tooltip) {
+  chrome.runtime.sendMessage({count: count, tooltip: tooltip});
 }
