@@ -10,14 +10,13 @@ chrome.browserAction.onClicked.addListener(function(tab) {
       }
     }
   );
-
 });
 
 
 // Change the extension icon and badge when the content script sent a message
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-    setIcon('blue', request.count, request.tooltip);
+    setIcon(request.color, request.count, request.tooltip);
 });
 
 
@@ -27,7 +26,7 @@ function checkTabs() {
     {url: 'https://mail.protonmail.ch/*'},
     function(array) {
       if (array.length == 0) {
-        setIcon('gray', '', 'No ProtonMail tab found');
+        setIcon('gray', 'X', 'No ProtonMail tab found');
       }
     }
   );
@@ -41,12 +40,15 @@ checkTabs();
 // Set the extension icon and badge
 function setIcon(color, count, tooltip) {
   var icon = '';
+  var badge_color = '#FF0000';
 
   if (color == 'gray') {
     icon = 'g';
+    badge_color = '#D0D0D0';
   }
 
   chrome.browserAction.setIcon({path: 'icons/icon-48' + icon + '.png'});
-  chrome.browserAction.setBadgeText({text: count});
   chrome.browserAction.setTitle({title: tooltip});
+  chrome.browserAction.setBadgeText({text: count});
+  chrome.browserAction.setBadgeBackgroundColor({color: badge_color});
 }
