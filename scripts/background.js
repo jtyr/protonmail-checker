@@ -1,7 +1,7 @@
 // Open a new tab or activate the first tab when clicked on the extension icon
 chrome.browserAction.onClicked.addListener(function(tab) {
   chrome.tabs.query(
-    {url: 'https://mail.protonmail.ch/*'},
+    {url: 'https://protonmail.ch/*'},
     function(tab_list) {
       if (tab_list.length == 0) {
         chrome.tabs.create({url: 'https://mail.protonmail.ch/inbox'});
