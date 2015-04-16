@@ -25,7 +25,20 @@ function checkTabs() {
   chrome.tabs.query(
     {url: 'https://protonmail.ch/*'},
     function(array) {
-      if (array.length == 0) {
+      var found = 0;
+
+      for (var i=0; i<array.length; i++) {
+        var url = array[i].url;
+
+        if (url.match(/^https:\/\/protonmail\.ch\/(compose|contacts|locked|login|settings)$/) ||
+            url.match(/^https:\/\/protonmail\.ch\/(draft|inbox|m|outbox|spam|starred|trash)(\/.*|)$/) ||
+            url.match(/^https:\/\/protonmail\.ch\/search\?.*/)) {
+
+          found = 1;
+        }
+      }
+
+      if (found == 0) {
         setIcon('gray', 'X', 'No ProtonMail tab found');
       }
     }

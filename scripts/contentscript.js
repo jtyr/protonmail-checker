@@ -10,7 +10,7 @@ function getCount() {
   // Element containing the Inbox count
   var elem = $('#topMenu li:nth-child(1)');
 
-  if (path.match(/^\/(login|locked)$/) || ! path.match(/^\/(compose|contacts|draft|inbox|m|outbox|spam|starred|trash)(\/.*|$)/)) {
+  if (path.match(/^\/(login|locked)$/)) {
     sendCountMessage('X', 'gray', 'Waiting for login');
   } else if (elem.length) {
     var unread = $(elem).attr('data-unread');
