@@ -10,7 +10,7 @@ function getCount() {
   // Element containing the Inbox count
   var elem = $('#topMenu li:nth-child(1)');
 
-  if (path.match(/^\/(login|locked)$/)) {
+  if (path.match(/^\/(login|locked)$/) || ! path.match(/^\/(compose|contacts|draft|inbox|m|outbox|spam|starred|trash)(\/.*|$)/)) {
     sendCountMessage('X', 'gray', 'Waiting for login');
   } else if (elem.length) {
     var unread = $(elem).attr('data-unread');
@@ -23,12 +23,12 @@ function getCount() {
 
     error = 0;
   } else {
-      // Show '?' only after 5 error checks
-      if (error > 4) {
-        sendCountMessage('?', 'blue', 'Problem to read ProtonMail Inbox');
-      } else {
-        error++;
-      }
+    // Show '?' only after 5 error checks
+    if (error > 4) {
+      sendCountMessage('?', 'blue', 'Problem to read ProtonMail Inbox');
+    } else {
+      error++;
+    }
   }
 
   setTimeout(getCount, 2000);

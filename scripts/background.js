@@ -1,10 +1,10 @@
 // Open a new tab or activate the first tab when clicked on the extension icon
 chrome.browserAction.onClicked.addListener(function(tab) {
   chrome.tabs.query(
-    {url: 'https://mail.protonmail.ch/*'},
+    {url: 'https://protonmail.ch/*'},
     function(tab_list) {
       if (tab_list.length == 0) {
-        chrome.tabs.create({url: 'https://mail.protonmail.ch/inbox'});
+        chrome.tabs.create({url: 'https://protonmail.ch/inbox'});
       } else {
         chrome.tabs.update(tab_list[0].id, {active: true});
       }
@@ -23,7 +23,7 @@ chrome.runtime.onMessage.addListener(
 // Change the extension icon and badge when there is no ProtonMail tab open
 function checkTabs() {
   chrome.tabs.query(
-    {url: 'https://mail.protonmail.ch/*'},
+    {url: 'https://protonmail.ch/*'},
     function(array) {
       if (array.length == 0) {
         setIcon('gray', 'X', 'No ProtonMail tab found');
