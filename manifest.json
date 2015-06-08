@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "ProtonMail Checker",
-  "version": "1.6",
+  "version": "1.7",
   "description": "Checks number of unread e-mails in the ProtonMail Inbox.",
   "icons": {
     "48" : "icons/icon-48.png",
@@ -19,12 +19,14 @@
   "content_scripts": [
     {
       "matches": [
+        "https://protonmail.ch/archive",
         "https://protonmail.ch/compose",
         "https://protonmail.ch/contacts",
         "https://protonmail.ch/draft",
         "https://protonmail.ch/draft/*",
         "https://protonmail.ch/inbox",
         "https://protonmail.ch/inbox/*",
+        "https://protonmail.ch/label/*",
         "https://protonmail.ch/locked",
         "https://protonmail.ch/login",
         "https://protonmail.ch/m/*",

@@ -30,8 +30,8 @@ function checkTabs() {
       for (var i=0; i<array.length; i++) {
         var url = array[i].url;
 
-        if (url.match(/^https:\/\/protonmail\.ch\/(compose|contacts|locked|login|settings)$/) ||
-            url.match(/^https:\/\/protonmail\.ch\/(draft|inbox|m|outbox|spam|starred|trash)(\/.*|)$/) ||
+        if (url.match(/^https:\/\/protonmail\.ch\/(archive|compose|contacts|locked|login|settings)$/) ||
+            url.match(/^https:\/\/protonmail\.ch\/(draft|inbox|label|m|outbox|spam|starred|trash)(\/.*|)$/) ||
             url.match(/^https:\/\/protonmail\.ch\/search\?.*/)) {
 
           found = 1;
