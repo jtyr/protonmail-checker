@@ -31,7 +31,7 @@ function checkTabs() {
         var url = array[i].url;
 
         if (url.match(/^https:\/\/protonmail\.ch\/(archive|compose|contacts|locked|login|settings)$/) ||
-            url.match(/^https:\/\/protonmail\.ch\/(draft|inbox|label|m|outbox|spam|starred|trash)(\/.*|)$/) ||
+            url.match(/^https:\/\/protonmail\.ch\/(drafts|inbox|label|m|outbox|spam|starred|trash)(\/.*|)$/) ||
             url.match(/^https:\/\/protonmail\.ch\/search\?.*/)) {
 
           found = 1;

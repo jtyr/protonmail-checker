@@ -8,12 +8,12 @@ function getCount() {
   var path = window.location.pathname;
 
   // Element containing the Inbox count
-  var elem = $('#topMenu li:nth-child(1)');
+  var elem = $('#inbox-li > a > span.label.hidden-xs.hidden-sm');
 
   if (path.match(/^\/(login|locked)$/)) {
     sendCountMessage('X', 'gray', 'Waiting for login');
   } else if (elem.length) {
-    var unread = $(elem).attr('data-unread');
+    var unread = $(elem).text();
 
     if (parseInt(unread)) {
       sendCountMessage(unread, 'blue', 'There is unread message');
