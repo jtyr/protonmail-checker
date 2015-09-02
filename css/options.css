@@ -1,0 +1,51 @@
+body {
+    background-color: gray;
+    margin: 0;
+    padding: 0 10px 0 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body[class] #Page {
+    width: auto;
+}
+
+h2 {
+    margin: 0 0 15px 0;
+    text-align: center;
+}
+
+legend {
+    font-style: italic;
+}
+
+input[type='text'] {
+    width: 2em;
+}
+
+#page {
+    border: 2px solid silver;
+    width: 800px;
+    min-width: 300px;
+    max-width: 60em;
+    margin: 15px auto 15px auto;
+    text-align: left;
+    background-color: #e9e9e9;
+    padding: 20px;
+}
+
+#msg {
+    display: none;
+    font-weight: bold;
+}
+
+.container {
+    background-color: silver;
+    border: 1px solid black;
+    padding: 10px 5px 10px 5px;
+    width: 350px;
+    margin: auto;
+}
+
+.center {
+    text-align: center;
+}

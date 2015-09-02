@@ -1,5 +1,5 @@
-ProtonMail Checker
-==================
+Inbox Checker for ProtonMail
+============================
 
 
 Description
