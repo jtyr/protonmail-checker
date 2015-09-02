@@ -68,20 +68,21 @@ function checkTabs() {
     chrome.tabs.query(
         {url: 'https://protonmail.ch/*'},
         function(array) {
-            var found = 0;
+            var found = false;
 
             for (var i=0; i<array.length; i++) {
                 var url = array[i].url;
 
-                if (url.match(/^https:\/\/protonmail\.ch\/(archive|compose|contacts|locked|login|settings)$/) ||
+                if (url.match(/^https:\/\/protonmail\.ch\/(archive|compose|contacts|login|login\/unlock|settings)$/) ||
                     url.match(/^https:\/\/protonmail\.ch\/(drafts|inbox|label|m|outbox|spam|starred|trash)(\/.*|)$/) ||
                     url.match(/^https:\/\/protonmail\.ch\/search\?.*/)) {
 
-                    found = 1;
+                    found = true;
+                    break;
                 }
             }
 
-            if (found == 0) {
+            if (! found) {
                 setIcon('gray', 'X', 'No ProtonMail tab found');
             }
         }
@@ -100,7 +101,7 @@ function install_notice() {
 
     var now = new Date().getTime();
     localStorage.setItem('install_time', now);
-    chrome.tabs.create({url: "../html/options.html"});
+    chrome.tabs.create({url: '../html/options.html'});
 }
 
 

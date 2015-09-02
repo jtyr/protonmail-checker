@@ -54,8 +54,8 @@ function restore_options() {
     }
 
     // Set save button event listener
-    document.getElementById("save").addEventListener("click", save_options);
+    document.getElementById('save').addEventListener('click', save_options);
 }
 
 // Run when document is fully loaded
-window.addEventListener("load", restore_options);
+window.addEventListener('load', restore_options);

@@ -24,7 +24,7 @@ function getCount() {
     // Element containing the Inbox count
     var elem = $('#inbox-li > a > span.label.hidden-xs.hidden-sm');
 
-    if (path.match(/^\/(login|locked)$/)) {
+    if (path.match(/^\/login(\/unlock|)$/)) {
         sendCountMessage('X', 'gray', 'Waiting for login');
     } else if (elem.length) {
         var unread = $(elem).text();
