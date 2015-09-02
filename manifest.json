@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "ProtonMail Checker",
-  "version": "1.8",
+  "name": "Inbox Checker for ProtonMail",
+  "version": "1.9",
   "description": "Checks number of unread e-mails in the ProtonMail Inbox.",
   "icons": {
     "48" : "icons/icon-48.png",
@@ -9,7 +9,7 @@
   },
   "browser_action": {
     "default_icon": "icons/icon-48g.png",
-    "default_title": "ProtonMail Checker"
+    "default_title": "Inbox Checker for ProtonMail"
   },
   "background": {
     "scripts": [
@@ -49,9 +49,11 @@
     }
   ],
   "web_accessible_resources": [
-    "scripts/jquery-2.0.2.min.map"
+    "scripts/jquery-2.0.2.min.map",
+    "icons/icon-48.png"
   ],
   "permissions": [
+    "notifications",
     "tabs"
   ]
 }

@@ -13,11 +13,42 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 });
 
 
-// Change the extension icon and badge when the content script sent a message
+// Listen for messages from the Content Script
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-    setIcon(request.color, request.count, request.tooltip);
-});
+    if (request.action && request.action == 'count') {
+      // Change the extension icon and badge
+      setIcon(request.color, request.count, request.tooltip);
+    } else if (request.action && request.action == 'notif') {
+      // Show notification if supported
+      if (Notification) {
+        // Create a simple text notification
+        var n = new Notification(request.title, request.opts);
+
+        setTimeout(n.close.bind(n), request.timeout || 15000);
+      } else {
+        console.log('Desktop notifications not supported.');
+      }
+    }
+  }
+);
+
+
+// Set the extension icon and badge
+function setIcon(color, count, tooltip) {
+  var icon = '';
+  var badge_color = '#FF0000';
+
+  if (color == 'gray') {
+    icon = 'g';
+    badge_color = '#D0D0D0';
+  }
+
+  chrome.browserAction.setIcon({path: 'icons/icon-48' + icon + '.png'});
+  chrome.browserAction.setTitle({title: tooltip});
+  chrome.browserAction.setBadgeText({text: count});
+  chrome.browserAction.setBadgeBackgroundColor({color: badge_color});
+}
 
 
 // Change the extension icon and badge when there is no ProtonMail tab open
@@ -44,24 +75,8 @@ function checkTabs() {
     }
   );
 
+  // Check for the open tab every 2 seconds
   setTimeout(checkTabs, 2000);
 }
 
 checkTabs();
-
-
-// Set the extension icon and badge
-function setIcon(color, count, tooltip) {
-  var icon = '';
-  var badge_color = '#FF0000';
-
-  if (color == 'gray') {
-    icon = 'g';
-    badge_color = '#D0D0D0';
-  }
-
-  chrome.browserAction.setIcon({path: 'icons/icon-48' + icon + '.png'});
-  chrome.browserAction.setTitle({title: tooltip});
-  chrome.browserAction.setBadgeText({text: count});
-  chrome.browserAction.setBadgeBackgroundColor({color: badge_color});
-}
