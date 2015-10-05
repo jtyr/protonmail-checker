@@ -50,15 +50,6 @@ function getCount() {
             sendCountMessage('', 'blue', 'There is no unread message');
             prev_unread = 0;
         }
-
-        error = 0;
-    } else {
-        // Show '?' only after 5 error checks
-        if (error > 4) {
-            sendCountMessage('?', 'blue', 'Problem to read ProtonMail Inbox');
-        } else {
-            error++;
-        }
     }
 
     // Scan the count of unread messages every 2 seconds
