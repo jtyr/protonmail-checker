@@ -73,7 +73,7 @@ function checkTabs() {
             for (var i=0; i<array.length; i++) {
                 var url = array[i].url;
 
-                if (url.match(/^https:\/\/protonmail\.ch\/(archive|compose|contacts|login|login\/unlock|settings)$/) ||
+                if (url.match(/^https:\/\/protonmail\.ch\/(archive|compose|contacts|labels|login|login\/unlock|security|settings|theme)$/) ||
                     url.match(/^https:\/\/protonmail\.ch\/(drafts|inbox|label|m|outbox|spam|starred|trash)(\/.*|)$/) ||
                     url.match(/^https:\/\/protonmail\.ch\/search\?.*/)) {
 
