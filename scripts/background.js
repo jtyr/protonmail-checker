@@ -1,10 +1,10 @@
 // Open a new tab or activate the first tab when clicked on the extension icon
 chrome.browserAction.onClicked.addListener(function(tab) {
     chrome.tabs.query(
-        {url: 'https://protonmail.ch/*'},
+        {url: 'https://mail.protonmail.com/*'},
         function(tab_list) {
             if (tab_list.length == 0) {
-                chrome.tabs.create({url: 'https://protonmail.ch/inbox'});
+                chrome.tabs.create({url: 'https://mail.protonmail.com/inbox'});
             } else {
                 chrome.tabs.update(tab_list[0].id, {active: true});
             }
@@ -66,16 +66,16 @@ function setIcon(color, count, tooltip) {
 // Change the extension icon and badge when there is no ProtonMail tab open
 function checkTabs() {
     chrome.tabs.query(
-        {url: 'https://protonmail.ch/*'},
+        {url: 'https://mail.protonmail.com/*'},
         function(array) {
             var found = false;
 
             for (var i=0; i<array.length; i++) {
                 var url = array[i].url;
 
-                if (url.match(/^https:\/\/protonmail\.ch\/(archive|compose|contacts|labels|login|login\/unlock|security|settings|theme)$/) ||
-                    url.match(/^https:\/\/protonmail\.ch\/(drafts|inbox|label|m|outbox|spam|starred|trash)(\/.*|)$/) ||
-                    url.match(/^https:\/\/protonmail\.ch\/search\?.*/)) {
+                if (url.match(/^https:\/\/mail\.protonmail\.com\/(account|appearance|archive|compose|contacts|labels|login|login\/unlock|security|settings)$/) ||
+                    url.match(/^https:\/\/mail\.protonmail\.com\/(drafts|inbox|label|m|outbox|sent|spam|starred|trash)(\/.*|)$/) ||
+                    url.match(/^https:\/\/mail\.protonmail\.com\/(search|label)\?.*/)) {
 
                     found = true;
                     break;
