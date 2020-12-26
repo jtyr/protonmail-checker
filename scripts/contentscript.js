@@ -18,16 +18,21 @@ function sendCountMessage(count, color, tooltip) {
 
 // Get the count of unread e-mails from the page
 function getCount() {
+
+    //moved to top in case of an error
+    // Scan the count of unread messages every 2 seconds
+    setTimeout(getCount, 2000);
+
     // Current URL pathname
     var path = window.location.pathname;
 
     // Element containing the Inbox count
-    var elem = $('#pm_sidebar > section > ul:nth-child(2) > li:nth-child(1) > a > em');
+    var elem = document.querySelector("li[data-key='allmail'] .navigationItem-counter");
 
     if (path.match(/^\/login(\/unlock|)$/)) {
         sendCountMessage('X', 'gray', 'Waiting for login');
-    } else if (elem.length) {
-        var unread = $(elem).text().replace("(", "").replace(")", "");
+    } else if (elem) {
+        var unread = elem.textContent.replace(/\D/g,'')
 
         if (parseInt(unread)) {
             sendCountMessage(unread, 'blue', 'There is unread message');
@@ -52,8 +57,7 @@ function getCount() {
         }
     }
 
-    // Scan the count of unread messages every 2 seconds
-    setTimeout(getCount, 2000);
+
 }
 
 
