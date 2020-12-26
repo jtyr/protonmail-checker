@@ -18,8 +18,6 @@ function sendCountMessage(count, color, tooltip) {
 
 // Get the count of unread e-mails from the page
 function getCount() {
-
-    //moved to top in case of an error
     // Scan the count of unread messages every 2 seconds
     setTimeout(getCount, 2000);
 
