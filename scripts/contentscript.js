@@ -54,9 +54,5 @@ function getCount() {
             prev_unread = 0;
         }
     }
-
-
 }
-
-
 getCount();
