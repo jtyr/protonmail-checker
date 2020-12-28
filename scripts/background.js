@@ -58,7 +58,7 @@ function setIcon(color, count, tooltip) {
 
     chrome.browserAction.setIcon({path: 'icons/icon-48' + icon + '.png'});
     chrome.browserAction.setTitle({title: tooltip});
-    chrome.browserAction.setBadgeText({text: count});
+    chrome.browserAction.setBadgeText({text: count.toString()});
     chrome.browserAction.setBadgeBackgroundColor({color: badge_color});
 }
 
